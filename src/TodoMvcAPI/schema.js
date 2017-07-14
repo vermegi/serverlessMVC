@@ -29,20 +29,6 @@ var TodoType = new graphql.GraphQLObjectType({
   }
 });
 
-// var queryType = new graphql.GraphQLObjectType({  
-//   name: 'Query',
-//   fields: function () {
-//     return {
-//       todos: {
-//         type: new graphql.GraphQLList(TodoType),
-//         resolve: function () {
-//           return TODOs;
-//         }
-//       }
-//     }
-//   }
-// });
-
 var queryType = new graphql.GraphQLObjectType({  
   name: 'Query',
   fields: function () {
@@ -61,7 +47,39 @@ var queryType = new graphql.GraphQLObjectType({
   }
 });
 
+var MutationAdd = {  
+  type: TodoType,
+  description: 'Add a Todo',
+  args: {
+    title: {
+      name: 'Todo title',
+      type: new GraphQLNonNull(GraphQLString)
+    }
+  },
+  resolve: (root, args) => {
+    var newTodo = new TODO({
+      title: args.title,
+      completed: false
+    })
+    newTodo.id = newTodo._id
+    return new Promise((resolve, reject) => {
+      newTodo.save(function (err) {
+        if (err) reject(err)
+        else resolve(newTodo)
+      })
+    })
+  }
+}
+
+var MutationType = new GraphQLObjectType({  
+  name: 'Mutation',
+  fields: {
+    add: MutationAdd
+  }
+});
+
 module.exports = new graphql.GraphQLSchema({  
-  query: queryType
+  query: queryType,
+  mutation: MutationType
 });
 
