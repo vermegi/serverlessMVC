@@ -34,7 +34,7 @@ var queryType = new graphql.GraphQLObjectType({
   name: 'Query',
   fields: () => ({
     todos: {
-      type: new GraphQLList(TodoType),
+      type: new graphql.GraphQLList(TodoType),
       resolve: () => {
         return new Promise((resolve, reject) => {
           TODO.find((err, todos) => {
