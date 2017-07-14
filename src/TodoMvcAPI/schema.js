@@ -30,7 +30,7 @@ var TodoType = new graphql.GraphQLObjectType({
   }
 });
 
-var QueryType = new graphql.GraphQLObjectType({  
+var queryType = new graphql.GraphQLObjectType({  
   name: 'Query',
   fields: () => ({
     todos: {
