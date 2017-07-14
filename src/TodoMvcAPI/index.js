@@ -7,7 +7,6 @@ module.exports = function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
     var query = req.body;// 'query { todos { id, title, completed } }';
    
-    context.log(req.body);
     context.log(query);
 
     graphql(Schema, query)
