@@ -1,7 +1,7 @@
 var { graphql, buildSchema } = require('graphql');
 var Schema = require('./schema');
 
-var query = 'query { todos { id, title, completed } }';
+var query = context.req.body.query;// 'query { todos { id, title, completed } }';
 var mutation = 'mutation {  add(title: "Read a book") {id,title}}';
 
 module.exports = function (context, req) {
