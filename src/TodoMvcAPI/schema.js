@@ -53,7 +53,7 @@ var MutationAdd = {
   args: {
     title: {
       name: 'Todo title',
-      type: new GraphQLNonNull(GraphQLString)
+      type: new graphql.GraphQLNonNull(GraphQLString)
     }
   },
   resolve: (root, args) => {
@@ -71,7 +71,7 @@ var MutationAdd = {
   }
 }
 
-var MutationType = new GraphQLObjectType({  
+var MutationType = new graphql.GraphQLObjectType({  
   name: 'Mutation',
   fields: {
     add: MutationAdd
