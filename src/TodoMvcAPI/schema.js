@@ -1,12 +1,14 @@
 var graphql = require ('graphql');  
 var mongoose = require('mongoose');
 
-mongoose.connect(GetEnvironmentVariable('cosmosconnection'));
+mongoose.connect(GetEnvironmentVariable('cosmosconnection'), function (error) {
+  if (error) console.error(error)
+  else console.log('mongo connected')
+});
 
 var TODO;
-
 if (mongoose.models.Todo) {
-  TODO = mongoose.model('Todo');
+    TODO = mongoose.model('Todo');
 } else {
     TODO = mongoose.model('Todo', {  
         id: mongoose.Schema.Types.ObjectId,
