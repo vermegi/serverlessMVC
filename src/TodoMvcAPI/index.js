@@ -23,7 +23,7 @@ module.exports = function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
     context.res = {
         // status: 200, /* Defaults to 200 */
-        body: graphql(schema, req.params.name, root)
+        body: graphql(schema, '{ hello }' , root) //req.params.name
     };
     context.done(); 
 };
