@@ -5,7 +5,7 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "route": "HttpTriggerJS/name/{name}",
+      "route": "TodoMvcAPI/{name}",
       "methods": [
         "get"
       ]
