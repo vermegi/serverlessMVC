@@ -1,6 +1,8 @@
 var graphql = require ('graphql');  
 var mongoose = require('mongoose');
 
+mongoose.connect(GetEnvironmentVariable('cosmosconnection'));
+
 var TODO;
 
 if (mongoose.models.Todo) {
