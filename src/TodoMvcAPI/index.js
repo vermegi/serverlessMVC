@@ -5,7 +5,7 @@ var mutation = 'mutation {  add(title: "Read a book") {id,title}}';
 
 module.exports = function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
-    var query = req.body.query;// 'query { todos { id, title, completed } }';
+    var query = req.body.data;// 'query { todos { id, title, completed } }';
    
     context.log(req.body);
     context.log(query);
