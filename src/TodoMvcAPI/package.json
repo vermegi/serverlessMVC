@@ -9,6 +9,7 @@
   "author": "Gitte Vermeiren",
   "license": "ISC",
   "dependencies": {
-    "graphql": "^0.10.3"
+    "graphql": "^0.10.3",
+    "mongoose": "^4.11.2"
   }
 }
