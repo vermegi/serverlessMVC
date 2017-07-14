@@ -21,9 +21,12 @@ var root = {
 
 module.exports = function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
+    var result = graphql(schema, '{ hello }' , root).then((response) => {return response;});
+    context.log(result);
+    
     context.res = {
         // status: 200, /* Defaults to 200 */
-        body: graphql(schema, '{ hello }' , root).then((response) => {return response;}) //req.params.name
+        body:  result//req.params.name
     };
     context.done(); 
 };
