@@ -1,28 +1,14 @@
 var { graphql, buildSchema } = require('graphql');
+var Schema = require('./schema');
 
-// Construct a schema, using GraphQL schema language
-var schema = buildSchema(`
-  type Query {
-    hello: String
-  }
-`);
-
-// The root provides a resolver function for each API endpoint
-var root = {
-  hello: () => {
-    return 'Hello world!';
-  },
-};
-
-// Run the GraphQL query '{ hello }' and print out the response
-// graphql(schema, '{ hello }', root).then((response) => {
-//   console.log(response);
-// });
+var query = 'query { todos { id, title, completed } }';
 
 module.exports = function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
-    graphql(schema, '{ hello }' , root)
+    
+    graphql(Schema, query)
         .then((response) => {
+            context.log(response);
             context.res = { body:response};
             context.done(); 
         });
