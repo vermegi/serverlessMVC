@@ -1,11 +1,17 @@
 var graphql = require ('graphql');  
 var mongoose = require('mongoose');
 
-var TODO = mongoose.model('Todo', {  
-  id: mongoose.Schema.Types.ObjectId,
-  title: String,
-  completed: Boolean
-});
+var TODO;
+
+if (mongoose.models.Todo) {
+  TODO = mongoose.model('Todo');
+} else {
+    TODO = mongoose.model('Todo', {  
+        id: mongoose.Schema.Types.ObjectId,
+        title: String,
+        completed: Boolean
+    });
+}
 
 var TodoType = new graphql.GraphQLObjectType({  
   name: 'todo',
