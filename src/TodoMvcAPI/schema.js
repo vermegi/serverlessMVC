@@ -53,7 +53,7 @@ var MutationAdd = {
   args: {
     title: {
       name: 'Todo title',
-      type: new graphql.GraphQLNonNull(GraphQLString)
+      type: new graphql.GraphQLNonNull(graphql.GraphQLString)
     }
   },
   resolve: (root, args) => {
