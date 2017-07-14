@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+var React = require('react');
+var ReactDOM = require('react-dom');
 
 module.exports = function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request for REACT.');
