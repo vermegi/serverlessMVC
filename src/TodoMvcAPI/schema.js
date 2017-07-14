@@ -1,7 +1,7 @@
 var graphql = require ('graphql');  
 var mongoose = require('mongoose');
 
-mongoose.connect(GetEnvironmentVariable('cosmosconnection'), function (error) {
+mongoose.connect(process.env['cosmosconnection'], function (error) {
   if (error) console.error(error)
   else console.log('mongo connected')
 });
