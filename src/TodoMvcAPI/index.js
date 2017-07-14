@@ -7,7 +7,7 @@ var mutation = 'mutation {  add(title: "Read a book") {id,title}}';
 module.exports = function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
     
-    graphql(Schema, mutation)
+    graphql(Schema, query)
         .then((response) => {
             context.log(response);
             context.res = { body:response};
